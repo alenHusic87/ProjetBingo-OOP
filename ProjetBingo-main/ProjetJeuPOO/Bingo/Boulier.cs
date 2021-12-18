@@ -100,32 +100,32 @@ namespace ProjetJeuPOO.Bingo
         }
 
          //Ajouter tout le numero dans le tableu ceux qui sont tire 
-        public void AjouterLeNumerosDnasTableu(int[,] Tab, int valeur)
+        public void AjouterLeNumerosDnasTableu(int[,] table, int valeur)
         {
             if (valeur <= 15)
             {
-                bingoCard.RemplirNumeros(Tab, valeur, 0);
+                bingoCard.RemplirNumeros(table, valeur, 0);
             }
             else if (valeur <= 30)
             {
-                bingoCard.RemplirNumeros(Tab, valeur, 1);
+                bingoCard.RemplirNumeros(table, valeur, 1);
             }
             else if (valeur <= 45)
             {
-                bingoCard.RemplirNumeros(Tab, valeur,2);
+                bingoCard.RemplirNumeros(table, valeur,2);
             }
             else if (valeur <= 60)
             {
-                bingoCard.RemplirNumeros(Tab, valeur, 3);
+                bingoCard.RemplirNumeros(table, valeur, 3);
             }
             else
             {
-                bingoCard.RemplirNumeros(Tab, valeur, 4);
+                bingoCard.RemplirNumeros(table, valeur, 4);
             }
         }
         public BingoBall getRanbomBall()
         {
-            bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(65).ToList();
+            bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(10).ToList();
             bingoball = new BingoBall(bingo_numeros);
             return bingoball;
         }

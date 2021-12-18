@@ -74,20 +74,20 @@ namespace ProjetJeuPOO.Bingo
                 Console.WriteLine();
             }
         }
-        public void RemplirNumeros(int[,] arr, int valeur, int row)
+        public void RemplirNumeros(int[,] table, int valeur, int row)
         {
             List<int> listeNumeros = new List<int>();
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < table.GetLength(0); i++)
             {
-                if (arr[i, row] == 0)
+                if (table[i, row] == 0)
                 {
-                    arr[i, row] = valeur;
+                    table[i, row] = valeur;
                     break;
                 }
             }
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < table.GetLength(0); i++)
             {
-                listeNumeros.Add(arr[i, row]);
+                listeNumeros.Add(table[i, row]);
 
             }
             listeNumeros.Reverse();
@@ -95,7 +95,7 @@ namespace ProjetJeuPOO.Bingo
 
             for (int i = 0; i < listeNumeros.Count; i++)
             {
-                arr[i, row] = listeNumeros[i];
+                table[i, row] = listeNumeros[i];
             }
         }
 
