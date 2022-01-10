@@ -11,16 +11,14 @@ namespace ProjetJeuPOO.Bingo
     class BingoCard
     {
        
+
+        //Tu declare un liste ou tu va mettre tout le numeros 
         private  List<int> allNumbers = new List<int>();
-        private int chosenIndex;
+        //Tu declare un Random 
+        private Random random = new Random();
         public BingoCard() { }
-
-        private  Random random = new Random();
-
-        public  List<int> AllNumbers { get => allNumbers; set => allNumbers = value; }
-        public int ChosenIndex { get => chosenIndex; set => chosenIndex = value; }
-
-        public  void RemplirBingoBoard(int[,] table)
+        //Remplire le bingo le tableu avec de numeros dans le list allNumbers
+        public void RemplirBingoBoard(int[,] table)
         {
             for (int col = 0; col < table.GetLength(0); col++)
             {
@@ -28,9 +26,9 @@ namespace ProjetJeuPOO.Bingo
                 allNumbers = Enumerable.Range(1 + (col * 15), 15).ToList();
 
                 //placez aléatoirement ces nombres dans les lignes de cette colonne
-                for (var row = 0; row < table.GetLength(1); row++)
+                for (int row = 0; row < table.GetLength(1); row++)
                 {
-                    chosenIndex = random.Next(allNumbers.Count);
+                   int  chosenIndex = random.Next(allNumbers.Count);
                     table[row, col] = allNumbers[chosenIndex];
                     allNumbers.RemoveAt(chosenIndex);
                    
@@ -38,7 +36,8 @@ namespace ProjetJeuPOO.Bingo
             }
         }
 
-        public  void PrintBoard(int[,] table)
+        //Remplir le numeros 
+        public  void AfficherCard(int[,] table)
         {
             // Aficcher le titre
             string[] headings = { "B", "I", "N", "G", "O" };
@@ -49,13 +48,12 @@ namespace ProjetJeuPOO.Bingo
                 Console.ResetColor();
             }
             Console.WriteLine();
-
             //Afficher les numeros
             for (int i = 0; i < table.GetLength(0); i++)
             {
                 for (int j = 0; j < table.GetLength(1); j++)
                 {
-                    //le Mileiu toujours Gratui
+                   //le Mileiu toujours Gratui
                     if (i == 2 & j == 2)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -63,6 +61,7 @@ namespace ProjetJeuPOO.Bingo
                         Console.Write("♠♠ \t");
                         Console.ResetColor();
                     }
+                    //affiche  le rest  avec de numeros 
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;

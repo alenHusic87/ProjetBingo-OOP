@@ -16,12 +16,10 @@ namespace ProjetJeuPOO.Bingo
 
    
         private int BingoCardAmount = 0;
-        private  int[,] cards = new int[5, 5];
-    
         private int m_match = 0;
         private Random m_random = new Random();
 
-        private BingoCard bingoCard = new BingoCard();
+        
 
         public List<BingoCard> list_bingoCard = new List<BingoCard>();
   
@@ -36,8 +34,14 @@ namespace ProjetJeuPOO.Bingo
         private int[,] bingo_cards_vide = new int[15, 5];
         private static  List<int> bingo_numeros = new List<int>();
 
+
+        private static List<int> test = new List<int>();
         private   BingoBall bingoball = new BingoBall(bingo_numeros);
 
+
+
+        private BingoCard bingoCard = new BingoCard();
+        private int[,] cards = new int[5, 5];
 
         public Boulier()
         {
@@ -67,7 +71,6 @@ namespace ProjetJeuPOO.Bingo
             {
                 for (int j = 0; j < table.GetLength(1); j++)
                 {
-
                     foreach (int number in bingo_numeros  )
                     {
 
@@ -84,7 +87,7 @@ namespace ProjetJeuPOO.Bingo
                     }
                 }
             }
-            bingoCard.PrintBoard(table);
+            bingoCard.AfficherCard(table);
             return table;
         }
         public void  AficherBalls()
@@ -125,7 +128,7 @@ namespace ProjetJeuPOO.Bingo
         }
         public BingoBall getRanbomBall()
         {
-            bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(10).ToList();
+            bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(75).ToList();
             bingoball = new BingoBall(bingo_numeros);
             return bingoball;
         }
@@ -148,7 +151,7 @@ namespace ProjetJeuPOO.Bingo
             for (int i = 0; i < BingoCardAmount; i++)
             {
                 bingoCard.RemplirBingoBoard(m_arrCard);
-                bingoCard.PrintBoard(m_arrCard);
+                bingoCard.AfficherCard(m_arrCard);
             }
             return BingoCardAmount;
         }
@@ -167,7 +170,13 @@ namespace ProjetJeuPOO.Bingo
                 case "1":
                     restartBoulier();
                     break;
+
+
+
                 case "2":;
+
+
+
 
                     break;
                 case "3":
