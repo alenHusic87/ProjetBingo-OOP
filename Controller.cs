@@ -15,6 +15,10 @@ namespace ProjetJeuPOO
            // Boulier a = new Boulier();
              BlackJackController gameBlackJack = new BlackJackController();
             gameBlackJack.Play();
+           
+           
+             //Pendu pendu = new Pendu();
+            //pendu.Jouer();
 
 
         }
