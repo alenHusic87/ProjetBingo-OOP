@@ -15,9 +15,6 @@ namespace ProjetJeuPOO.SimiliBlackJack
         private bool stand = false;
         private bool bust = false;
 
-
-
-
         public BlackJackController()
         {
            joueur.Jouer();
@@ -117,7 +114,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
                 Console.WriteLine("");
                 Console.Write("Voulez-vous jouer encore (Oui/Non) ? ");
                 string response = Console.ReadLine().ToString().ToUpper();
-                if (response == "Oui" || response == "O")
+                if (response.Equals("Oui") || response.Equals("O"))
                 {
                     playGame = true;
                     joueur.ResetHand();
@@ -132,7 +129,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
                     GameStart();
 
                 }
-                if (response == "Non" || response == "N")
+                if (response.Equals("Non") || response.Equals("N"))
                 {
                     playGame = false;
                     Controller start = new Controller();
