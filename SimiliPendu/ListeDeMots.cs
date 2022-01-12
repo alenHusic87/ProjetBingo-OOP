@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Pendu
+namespace ProjetJeuPOO.SimiliPendu
 {
     class ListeDeMots
     {
         private List<string> listeDeMot;
-      
-        public List<string> ListeDeMot{ get => listeDeMot; set => listeDeMot = value; }
+
+        public List<string> ListeDeMot { get => listeDeMot; set => listeDeMot = value; }
 
         public ListeDeMots()
         {

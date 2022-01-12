@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Pendu
+namespace ProjetJeuPOO.SimiliPendu
 {
     interface IPendu
     {

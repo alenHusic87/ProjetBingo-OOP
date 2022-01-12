@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 
-namespace Pendu
+namespace ProjetJeuPOO.SimiliPendu
 {
-    class Pendu :IPendu
+    class Pendu : IPendu
     {
         public Pendu() { }
 
@@ -15,10 +15,10 @@ namespace Pendu
         private Joueur ordi = new Joueur();
 
         private ListeDeMots listeDeMot;
-        private  List<string> letterGuessed = new List<string>();
+        private List<string> letterGuessed = new List<string>();
 
         private List<string> charGuessed = new List<string>();
-        private string  randomWord;
+        private string randomWord;
 
         List<char> correctChar = new List<char>();
         List<char> incorrectChar = new List<char>();
@@ -27,8 +27,8 @@ namespace Pendu
 
         List<string> motCompletTrouve = new List<string>();
 
-        public  StringBuilder displayToPlayer;
-      
+        public StringBuilder displayToPlayer;
+
 
         public void Jouer()
         {
@@ -40,8 +40,8 @@ namespace Pendu
             ordi.SetName("Croupier");
 
             Console.WriteLine();
-             randomWord = listeDeMot.GetRandomMot();
-     
+            randomWord = listeDeMot.GetRandomMot();
+
             //si le mot a 10 letres et plus afficher 
             if (randomWord.Length >= 10)
             {
@@ -52,9 +52,9 @@ namespace Pendu
             {
                 Play();
             }
-            
+
         }
-        
+
         private void OrdiTurn()
         {
             charGuessed.Clear();
@@ -124,7 +124,7 @@ namespace Pendu
                         Console.WriteLine("Toutes mes félicitations  Vous avez trouve le mot");
                         ordi.NbpointJoueur++;
                         ordi.VoirScoreOrdi();
-                       
+
                         win = true;
                         break;
                     }
@@ -180,11 +180,13 @@ namespace Pendu
                 if (response == "Non" || response == "N")
                 {
                     playGame = false;
+
+                    //retunr au menu principal 
                     System.Environment.Exit(0);
                 }
                 else
-                { 
-                    Console.WriteLine("Tapez Oui ou Non!"); 
+                {
+                    Console.WriteLine("Tapez Oui ou Non!");
                 }
             }
         }
@@ -350,19 +352,19 @@ namespace Pendu
         }
         public void AfficherGagnant()
         {
-           
-            if(joueur.NbpointJoueur.Equals(3))
+
+            if (joueur.NbpointJoueur.Equals(3))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("");
                 Console.WriteLine("---------------------------------------------------------------------");
-                Console.WriteLine( "       Bravo    " + joueur.GetName + " Tu as gaganer le turnois");
+                Console.WriteLine("       Bravo    " + joueur.GetName + " Tu as gaganer le turnois");
                 Console.WriteLine("---------------------------------------------------------------------");
                 System.Threading.Thread.Sleep(1000);
                 joueur.NbpointJoueur = 0;
                 randomWord = listeDeMot.GetRandomMot();
                 PlayAgain();
-                
+
                 Console.ResetColor();
             }
             if (ordi.NbpointOrdi.Equals(3))
@@ -379,12 +381,12 @@ namespace Pendu
             }
 
         }
-        public  bool Validate(string input)
+        public bool Validate(string input)
         {
             if (input != "")
             //vérifie si la mot  ne contient que des caractères
             {
-                return input.All(Char.IsLetter); 
+                return input.All(Char.IsLetter);
             }
             else
             {
@@ -399,7 +401,7 @@ namespace Pendu
             Console.WriteLine("Vous avez  doit a un indice:");
             Console.ResetColor();
             Random random = new Random();
-            int valeur = random.Next(2,5);
+            int valeur = random.Next(2, 5);
 
             List<int> liste = GetListeNumber(str, valeur);
             Console.ForegroundColor = ConsoleColor.Green;
@@ -465,7 +467,7 @@ namespace Pendu
                 //si le letre contine dans le mot 
                 if (letterDevine.Contains(leChar))
                 {
-                   //ajoute la lettre si il a trouve 
+                    //ajoute la lettre si il a trouve 
                     correctletters += leChar;
                 }
                 else
@@ -501,7 +503,7 @@ namespace Pendu
             //Return troue ou false;
             return isWord;
         }
-        public  string GenerateRandomAlphanumericString(int length)
+        public string GenerateRandomAlphanumericString(int length)
         {
             const string chars = "abcdefghijklmnopqrstuvwxyz";
 

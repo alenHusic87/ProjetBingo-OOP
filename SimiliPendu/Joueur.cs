@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pendu
+namespace ProjetJeuPOO.SimiliPendu
 {
-   
+
 
     class Joueur
     {
@@ -44,7 +44,7 @@ namespace Pendu
             Console.WriteLine();
             Console.ResetColor();
         }
-        
+
 
     }
 }
