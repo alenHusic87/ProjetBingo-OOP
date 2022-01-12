@@ -172,12 +172,12 @@ namespace ProjetJeuPOO.SimiliPendu
                 Console.WriteLine("");
                 Console.Write("Voulez-vous jouer encore (Oui/Non) ? ");
                 string response = Console.ReadLine().ToString().ToUpper();
-                if (response == "Oui" || response == "O")
+                if (response.Equals("Oui") || response.Equals("O"))
                 {
                     playGame = true;
                     Play();
                 }
-                if (response == "Non" || response == "N")
+                if (response.Equals("Non") || response.Equals("N"))
                 {
                     playGame = false;
                     Controller start = new Controller();
@@ -192,21 +192,19 @@ namespace ProjetJeuPOO.SimiliPendu
         public bool IsWord(string secreword, List<string> letterGuessed)
         {
             bool word = false;
-            //loop through secretword
+            //parcourt le mot secret
             for (int i = 0; i < secreword.Length; i++)
             {
-                //initialize c with the index of secretword[i]
-                string c = Convert.ToString(secreword[i]);
-                //check if c is in list of letters Guess
-                if (letterGuessed.Contains(c))
+                string str = Convert.ToString(secreword[i]);
+                //vérifie si str est dans la liste de lettres
+                if (letterGuessed.Contains(str))
                 {
                     word = true;
                 }
-                /*if c is not in the letters guessed then we dont have the
-                * we dont have the full word*/
+                /*si str n'est pas dans les lettres devinées alors nous n'avons pas le
+                 *nous n'avons pas le mot complet*/
                 else
                 {
-                    //change the value of word to false and return false
                     return word = false;
                 }
             }
@@ -270,9 +268,9 @@ namespace ProjetJeuPOO.SimiliPendu
                         Console.WriteLine("Essayez une lettre différent");
                         live -= 1;
                         Console.WriteLine("Il vous reste  {0} essais", live);
-                    }
-                    //if word found
+                    } 
                     letterGuessed.Add(choix);
+
                     if (IsWord(randomWord, letterGuessed) || choix.Equals(randomWord))
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -288,7 +286,6 @@ namespace ProjetJeuPOO.SimiliPendu
                     //si une lettre a ete trouve 
                     else if (randomWord.Contains(choix))
                     {
-
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.WriteLine("Bravo vous avez trouve une lettre");
                         Console.ForegroundColor = ConsoleColor.Green;
