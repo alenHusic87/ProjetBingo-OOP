@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-
-namespace ProjetJeuPOO.SimiliPendu
+namespace Pendu
 {
+    class ListeDeMots
+    {
         private List<string> listeDeMot;
       
         public List<string> ListeDeMot{ get => listeDeMot; set => listeDeMot = value; }
@@ -19,4 +19,5 @@ namespace ProjetJeuPOO.SimiliPendu
             int index = random.Next(0, listeDeMot.Count);
             return listeDeMot[index];
         }
+    }
 }
