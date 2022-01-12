@@ -4,6 +4,7 @@ using System.Collections;
 using System.Text;
 using System.Linq;
 using System.Drawing;
+using System.Threading;
 
 
 // Classe qui représente le boulier. On y retire les boules au hazard.
@@ -51,9 +52,6 @@ namespace ProjetJeuPOO.Bingo
             AfficherMenu();
 
         }
-
-        
-
         private void NombreMatch()
         {
             AficherBalls();
@@ -97,6 +95,7 @@ namespace ProjetJeuPOO.Bingo
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write(number+" ");
                 AjouterLeNumerosDnasTableu(bingo_cards_vide, number);
+                System.Threading.Thread.Sleep(1000);
                 Console.ResetColor();
             }
 
@@ -130,15 +129,40 @@ namespace ProjetJeuPOO.Bingo
         {
             bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(75).ToList();
             bingoball = new BingoBall(bingo_numeros);
+           
             return bingoball;
         }
         public void restartBoulier() 
         {
-           // add(bingoball);
+            bool playGame = false;
+            while (!playGame)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("retourner au menu pour choisir un autre jeu ou de démarrer une nouvelle partie?");
+                Console.WriteLine("1- Demarrer une nouvelle partie");
+                Console.WriteLine("2- Retourner au menu principal");
+                string response = Console.ReadLine().ToString();
+                if (response.Equals("1" ))
+                {
+                    playGame = true;
+                }
+                if (response.Equals("2"))
+                {
+                    playGame = false;
+                    Controller start = new Controller();
+                    start.Menu();
+                }
+                else
+                {
+                    Console.WriteLine("Tapez 1 ou 2!");
+                }
+            }
+
 
         }
         public void add(BingoBall element)
         {
+            ;
             list_balls.Add(getRanbomBall());
         }
         public bool isEmpty()
