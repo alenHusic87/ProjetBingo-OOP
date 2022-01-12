@@ -247,11 +247,15 @@ namespace ProjetJeuPOO.SimiliPendu
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("------------------------------------------------------------");
             Console.ResetColor();
-
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("le mot c'est  " + randomWord.ToUpper());
+            Console.ResetColor();
+            Console.WriteLine();
             while (!win && live > 0)
             {
 
                 Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("Ce quoi votre choix: ");
                 string choix = Console.ReadLine().ToLower();
                 //if letterGuessed contains input
                 //validates if the input is OK
