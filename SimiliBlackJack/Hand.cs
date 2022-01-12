@@ -39,8 +39,9 @@ namespace ProjetJeuPOO.SimiliBlackJack
         /* Fonction Jouer  */
         public void Jouer()
         {
-            Console.Write("Enter your name: ");
+            Console.Write("Enter votre  prenom: ");
             SetName(Console.ReadLine());
+            Console.WriteLine($"\nSalut  et  Bienvenue {name} dans le jeu BlackJack ");
             VoirScore();
             VoirScoreOrdi();
         }

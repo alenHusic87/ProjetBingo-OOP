@@ -17,7 +17,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
         
         public Deck()
         {
-            //Making new instances of Card object in the list
+            
             foreach (string strSuit in arrSuits)
             {
                 foreach (string strRank in arrRanks)
@@ -83,7 +83,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
                 }
             }
         }
-        //Shuffling the deck
+      
         public void Shuffle()
         {
             int n = cardDeck.Count;

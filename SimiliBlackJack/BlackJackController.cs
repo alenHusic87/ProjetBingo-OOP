@@ -20,8 +20,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
 
         public BlackJackController()
         {
-            Console.WriteLine("Bienvenue dans le Jeu Blacjack");
-            joueur.Jouer();
+           joueur.Jouer();
            croupier.SetName("Croupier");
 
         }
@@ -112,26 +111,38 @@ namespace ProjetJeuPOO.SimiliBlackJack
         }
         private void Rejouer() 
         {
-            string choix = "z";
-            Console.Write("\nVoulez-vous rejouer le turnois ? O/N: ");
-            choix = Console.ReadLine();
-
-            while (choix.ToUpper() != "O" && choix.ToUpper() != "N")
+            bool playGame = false;
+            while (!playGame)
             {
-                Console.WriteLine("Mauvaise saisie ! Essayer à nouveau!");
-                choix = Console.ReadLine();
-            }
+                Console.WriteLine("");
+                Console.Write("Voulez-vous jouer encore (Oui/Non) ? ");
+                string response = Console.ReadLine().ToString().ToUpper();
+                if (response == "Oui" || response == "O")
+                {
+                    playGame = true;
+                    joueur.ResetHand();
+                    croupier.ResetHand();
+                    joueur.GetNbegalite = 0;
+                    joueur.GetNblose= 0;
+                    joueur.GetNbwin = 0;
 
-            if (choix.ToUpper().Equals("O"))
-            {
-                //si OUI remettre le turnois a zero etc
- 
-            }
-            else
-            {
-                //si NON afiche le menu principal
-            }
+                    croupier.GetNbegaliteOrdi = 0;
+                    croupier.GetNbloseOrdi = 0;
+                    croupier.GetNbwinOrdi = 0;
+                    GameStart();
 
+                }
+                if (response == "Non" || response == "N")
+                {
+                    playGame = false;
+                    Controller start = new Controller();
+                    start.Menu();
+                }
+                else
+                {
+                    Console.WriteLine("Tapez Oui ou Non!");
+                }
+            }
 
         }
         private void VerifieVictoire()
