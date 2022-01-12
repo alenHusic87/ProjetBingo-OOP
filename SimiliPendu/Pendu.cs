@@ -180,9 +180,8 @@ namespace ProjetJeuPOO.SimiliPendu
                 if (response == "Non" || response == "N")
                 {
                     playGame = false;
-
-                    //retunr au menu principal 
-                    System.Environment.Exit(0);
+                    Controller start = new Controller();
+                    start.Menu();
                 }
                 else
                 {
@@ -249,8 +248,6 @@ namespace ProjetJeuPOO.SimiliPendu
             Console.WriteLine("------------------------------------------------------------");
             Console.ResetColor();
 
-
-            Console.Write(randomWord);
             while (!win && live > 0)
             {
 
