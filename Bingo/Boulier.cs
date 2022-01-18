@@ -30,7 +30,16 @@ namespace ProjetJeuPOO.Bingo
        private int[] m_numeroRandom = new int[75];
 
         int[,] m_arrCard = new int[5, 5];
+        int[,] m_arrCard2 = new int[5, 5];
+        int[,] m_arrCard3 = new int[5, 5];
+        int[,] m_arrCard4 = new int[5, 5];
+
         int[,] m_arrCard_vide = new int[5, 5];
+
+
+
+        
+
 
         private int[,] bingo_cards_vide = new int[15, 5];
         private static  List<int> bingo_numeros = new List<int>();
@@ -39,19 +48,22 @@ namespace ProjetJeuPOO.Bingo
         private static List<int> test = new List<int>();
         private   BingoBall bingoball = new BingoBall(bingo_numeros);
 
-
+        private static List<int[,]> adingcardsss = new List<int[,]>();
 
         private BingoCard bingoCard = new BingoCard();
         private int[,] cards = new int[5, 5];
 
+
         public Boulier()
         {
-            add(bingoball);
-            getSize();
-            NombreMatch();
+            ///add(bingoball);
+            // getSize();
+            // NombreMatch();
+
             AfficherMenu();
 
         }
+   
         private void NombreMatch()
         {
             AficherBalls();
@@ -59,6 +71,9 @@ namespace ProjetJeuPOO.Bingo
 
 
             VerifiMatchs(m_arrCard);
+            VerifiMatchs(m_arrCard2);
+           // VerifiMatchs(m_arrCard3);
+           // VerifiMatchs(m_arrCard4);
             Console.WriteLine("**********************************");
             Console.WriteLine("Vous avez obtenu les " + m_match + " numéros suivants:  ");
             Console.WriteLine("********************************************");
@@ -87,6 +102,10 @@ namespace ProjetJeuPOO.Bingo
             }
             bingoCard.AfficherCard(table);
             return table;
+        }
+        public BingoCard CreerCarteJoueur()
+        {
+            return bingoCard;
         }
         public void  AficherBalls()
         {
@@ -127,24 +146,32 @@ namespace ProjetJeuPOO.Bingo
         }
         public BingoBall getRanbomBall()
         {
-            bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(75).ToList();
-            bingoball = new BingoBall(bingo_numeros);
-           
+            for (int i = 1; i <= 75; i++)
+            {
+                bingo_numeros = Enumerable.Range(1, 75).OrderBy(x => m_random.Next()).Take(i).ToList();
+                bingoball = new BingoBall(bingo_numeros);
+            }
+          
+            
             return bingoball;
         }
-        public void restartBoulier() 
+
+        public void Rejouer() 
         {
             bool playGame = false;
             while (!playGame)
             {
                 Console.WriteLine("");
-                Console.WriteLine("retourner au menu pour choisir un autre jeu ou de démarrer une nouvelle partie?");
                 Console.WriteLine("1- Demarrer une nouvelle partie");
                 Console.WriteLine("2- Retourner au menu principal");
                 string response = Console.ReadLine().ToString();
                 if (response.Equals("1" ))
                 {
                     playGame = true;
+                    add(bingoball);
+                    getSize();
+                    NombreMatch();
+                    AfficherMenu();
                 }
                 if (response.Equals("2"))
                 {
@@ -160,9 +187,14 @@ namespace ProjetJeuPOO.Bingo
 
 
         }
+        public void restartBoulier()
+        {
+            add(bingoball);
+            getSize();
+            NombreMatch();
+        }
         public void add(BingoBall element)
         {
-            ;
             list_balls.Add(getRanbomBall());
         }
         public bool isEmpty()
@@ -171,13 +203,47 @@ namespace ProjetJeuPOO.Bingo
         }
         public int getSize()
         {
-            VerifiSiCePosible();
-            for (int i = 0; i < BingoCardAmount; i++)
+            int BingoCardAmount = VerifiSiCePosible(); 
+            switch (BingoCardAmount)
             {
-                bingoCard.RemplirBingoBoard(m_arrCard);
-                bingoCard.AfficherCard(m_arrCard);
+                case 1:
+                    bingoCard.RemplirBingoBoard(m_arrCard);
+                    bingoCard.AfficherCard(m_arrCard);
+                    break;
+                case 2:
+                    bingoCard.RemplirBingoBoard(m_arrCard);
+                    bingoCard.AfficherCard(m_arrCard);
+                    bingoCard.RemplirBingoBoard(m_arrCard2);
+                    bingoCard.AfficherCard(m_arrCard2);
+                    break;
+                case 3:
+                    bingoCard.RemplirBingoBoard(m_arrCard);
+                    bingoCard.AfficherCard(m_arrCard);
+                    bingoCard.RemplirBingoBoard(m_arrCard2);
+                    bingoCard.AfficherCard(m_arrCard2);
+                    bingoCard.RemplirBingoBoard(m_arrCard3);
+                    bingoCard.AfficherCard(m_arrCard3);
+                    break;
+                case 4:
+                    bingoCard.RemplirBingoBoard(m_arrCard);
+                    bingoCard.AfficherCard(m_arrCard);
+                    bingoCard.RemplirBingoBoard(m_arrCard2);
+                    bingoCard.AfficherCard(m_arrCard2);
+                    bingoCard.RemplirBingoBoard(m_arrCard3);
+                    bingoCard.AfficherCard(m_arrCard3);
+                    bingoCard.RemplirBingoBoard(m_arrCard4);
+                    bingoCard.AfficherCard(m_arrCard4);
+                    break;
             }
             return BingoCardAmount;
+
+
+
+            /* for (int i = 0; i < BingoCardAmount; i++)
+             {
+                 bingoCard.RemplirBingoBoard(m_arrCard);
+                 bingoCard.AfficherCard(m_arrCard);
+             }*/
         }
 
         public void AfficherMenu()
@@ -194,24 +260,19 @@ namespace ProjetJeuPOO.Bingo
                 case "1":
                     restartBoulier();
                     break;
-
-
-
                 case "2":;
-
-
-
 
                     break;
                 case "3":
                     bingoCard.AfficheAnnonceur(bingo_cards_vide);
                     break;
                 case "4":
-                    add(bingoball);
-                    AficherBalls();
+                    getRanbomBall();
+                   // AficherBalls();
                     NombreMatch();
                     break;
                 case "5":
+                    Rejouer();
                     break;
                 default:
                     PrintMessage("Opération invalide", false);

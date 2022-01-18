@@ -16,7 +16,11 @@ namespace ProjetJeuPOO.Bingo
         private  List<int> allNumbers = new List<int>();
         //Tu declare un Random 
         private Random random = new Random();
-        public BingoCard() { }
+        public BingoCard()
+        {
+           
+
+        }
         //Remplire le bingo le tableu avec de numeros dans le list allNumbers
         public void RemplirBingoBoard(int[,] table)
         {
